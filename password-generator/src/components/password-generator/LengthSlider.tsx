@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import { useController, useFormContext } from "react-hook-form";
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "../../features/password/api/generatePassword";
 
 interface LengthSliderProps {
   name: string;
@@ -22,7 +23,7 @@ export default function LengthSlider({ name }: LengthSliderProps) {
       <Typography variant='subtitle1'>Length</Typography>
       <Box className='flex text-center items-center'>
         <Typography className='pr-8' variant='body1'>
-          8
+          {field.value}
         </Typography>
         <Slider
           value={field.value}
@@ -30,8 +31,8 @@ export default function LengthSlider({ name }: LengthSliderProps) {
           name={field.name}
           disabled={field.disabled}
           defaultValue={DEFAULT_LENGTH}
-          min={8}
-          max={24}
+          min={MIN_PASSWORD_LENGTH}
+          max={MAX_PASSWORD_LENGTH}
           step={1}
         />
       </Box>
